@@ -1,0 +1,10 @@
+version: '3'
+services:
+  shiftrio:
+    build:
+      context: .
+      dockerfile: ./shiftrio/Dockerfile
+    container_name: shiftrio-container
+    ports:
+        - 1883:1883
+        - 1884:1884
