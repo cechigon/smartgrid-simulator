@@ -1,6 +1,6 @@
 # ベースイメージを指定
 FROM scratch
 
-ADD shiftr-io-cli /
+ADD ./shiftrio/shiftr-io-cli /
 
 CMD ["/shiftr-io-cli","broker"]

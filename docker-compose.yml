@@ -8,3 +8,19 @@ services:
     ports:
         - 1883:1883
         - 1884:1884
+    networks:
+      - mqtt_network
+  python3:
+    build:
+      context: .
+      dockerfile: ./python/Dockerfile
+    container_name: python3-container
+    working_dir: /python_ws
+    tty: true
+    volumes:
+    - ./python/python_ws:/python_ws
+    networks:
+      - mqtt_network
+networks:
+  mqtt_network:
+    driver: bridge
