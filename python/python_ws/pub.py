@@ -5,6 +5,7 @@ import paho.mqtt.client as mqtt
 from time import sleep
 import random
 
+
 def on_connect(client, userdata, flag, rc):
     print("Connected with result code " + str(rc))
 
@@ -15,7 +16,8 @@ def on_disconnect(client, userdata, rc):
 
 
 def on_publish(client, userdata, mid):
-    print("publish: {0}".format(mid))
+    # print("publish: {0}".format(mid))
+    pass
 
 
 def main():
@@ -31,10 +33,13 @@ def main():
 
     # 永久に繰り返す
     while True:
-        client.publish("msg", "Hello!")
+        client.publish(f'car/{client_id}/charge-of-status', random.randint(0, 1))
+        client.publish(f'car/{client_id}/charge-of-battery', random.randint(0, 1000))
+        client.publish(f'car/{client_id}/charge-of-max', 1000)
+        client.publish(f'car/{client_id}/input-power', random.randint(0, 1000))
+        client.publish(f'car/{client_id}/output-power', random.randint(0, 1000))
         sleep(0.5)
-        client.publish("foge", "Hello!")
-        sleep(0.5)
+
 
 if __name__ == '__main__':
     main()
