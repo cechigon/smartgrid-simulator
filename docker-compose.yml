@@ -21,6 +21,18 @@ services:
     - ./python/python_ws:/python_ws
     networks:
       - mqtt_network
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-mqtt-datasource
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+    networks:
+      - mqtt_network
 networks:
   mqtt_network:
     driver: bridge

@@ -21,7 +21,8 @@ def on_publish(client, userdata, mid):
 
 
 def main():
-    client_id = f'python-mqtt-{random.randint(0, 1000)}'
+    # client_id = f'python-mqtt-{random.randint(0, 1000)}'
+    client_id = "foge"
     client = mqtt.Client(client_id)        # クラスのインスタンス(実体)の作成
     client.on_connect = on_connect         # 接続時のコールバック関数を登録
     client.on_disconnect = on_disconnect   # 切断時のコールバックを登録
